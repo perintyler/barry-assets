@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" font-family="Helvetica Neue, Arial, system-ui, sans-serif" viewBox="0 0 980 250" role="img" aria-label="Three gate styles side by side: per-call ruling where the harness asks Barry's decide function on each tool call; static hook where a generated script with a baked allow set answers locally; and settings-only where deny rules in the vendor settings are the only control.">
+<svg xmlns="http://www.w3.org/2000/svg" font-family="Helvetica Neue, Arial, system-ui, sans-serif" color="#151b1e" viewBox="0 0 980 250" role="img" aria-label="Three gate styles side by side: per-call ruling where the harness asks Barry's decide function on each tool call; static hook where a generated script with a baked allow set answers locally; and settings-only where deny rules in the vendor settings are the only control."><rect x="-5" y="-5" width="990.0" height="260.0" fill="#ffffff"/>
   <defs><marker id="arG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
   <g font-size="12" fill="currentColor">
     <!-- column 1 per-call -->

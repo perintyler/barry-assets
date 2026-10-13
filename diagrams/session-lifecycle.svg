@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" font-family="Helvetica Neue, Arial, system-ui, sans-serif" viewBox="0 0 980 420" role="img" aria-label="State diagram. Record state: open to closed to archived, or deleted when empty. Work status: pending to running, back to pending between turns, to completed, failed or cancelled. In-memory: starting, streaming, waiting, complete, error. Three writers (DELETE, discard-worktree, start failure) set status only and leave active=1 state=open.">
+<svg xmlns="http://www.w3.org/2000/svg" font-family="Helvetica Neue, Arial, system-ui, sans-serif" color="#151b1e" viewBox="0 0 980 390" role="img" aria-label="State diagram. Record state: open to closed to archived, or deleted when empty. Work status: pending to running, back to pending between turns, to completed, failed or cancelled. In-memory: starting, streaming, waiting, complete, error."><rect x="-5" y="-5" width="990.0" height="400" fill="#ffffff"/><path d="M360 206 C470 250 620 250 725 216" fill="none" stroke="#c0c8c3" stroke-width="1.2" marker-end="url(#arL)"/><path d="M360 210 C500 275 760 275 865 216" fill="none" stroke="#c0c8c3" stroke-width="1.2" marker-end="url(#arL)"/><text x="545" y="246" text-anchor="middle" font-size="10.5" fill="#7c8689">turn ends</text>
   <defs><marker id="arL" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
   <g font-size="12" fill="currentColor">
     <!-- record state lane -->
@@ -23,10 +23,6 @@
     <line x1="142" y1="188" x2="238" y2="188" stroke="currentColor" stroke-width="1.2" marker-end="url(#arL)"/><text x="190" y="180" text-anchor="middle" font-size="10.5" fill="#7c8689">turn starts</text>
     <line x1="238" y1="204" x2="142" y2="204" stroke="currentColor" stroke-width="1.2" marker-end="url(#arL)"/><text x="190" y="226" text-anchor="middle" font-size="10.5" fill="#7c8689">turn ends / TUI leaves</text>
     <line x1="362" y1="188" x2="518" y2="188" stroke="currentColor" stroke-width="1.2" marker-end="url(#arL)"/><text x="440" y="180" text-anchor="middle" font-size="10.5" fill="#7c8689">stop · eviction (!)</text>
-    <path d="M362 200 C420 240 650 240 725 216" fill="none" stroke="#e34948" stroke-width="1.3" marker-end="url(#arL)"/>
-    <path d="M362 206 C440 270 790 270 865 216" fill="none" stroke="#e34948" stroke-width="1.3" marker-end="url(#arL)"/>
-    <text x="540" y="262" text-anchor="middle" font-size="10.5" fill="#e34948">turn error (closes record) · start failure (status only)</text>
-    <text x="640" y="290" text-anchor="middle" font-size="10.5" fill="#e34948">DELETE /sessions/:id · discard-worktree (status only: record stays open, active=1)</text>
 
     <!-- in-memory lane -->
     <text x="20" y="330" font-weight="600" font-size="13">In-memory ActiveSession.status (sessions.api only, lost on restart)</text>

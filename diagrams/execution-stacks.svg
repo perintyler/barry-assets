@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" font-family="Helvetica Neue, Arial, system-ui, sans-serif" viewBox="0 0 980 260" role="img" aria-label="Two parallel stacks for a hosted session: v1 SessionRuntime with WebSocket /api/v1/ws and POST message, in-memory turn queue, lost on restart; v2 TurnExecution with AG-UI SSE and /api/v2 routes, durable session_turns rows, recovery_required on owner death. Cross guards: v1 refuses when a durable turn is active, v2 refuses when a legacy turn is executing, env flag disables v1.">
+  <defs><marker id="arS" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+  <g font-size="12" fill="currentColor">
+    <rect x="20" y="20" width="420" height="200" rx="8" fill="#ffffff" stroke="#eb6834" stroke-width="1.5"/>
+    <text x="36" y="46" font-weight="700" font-size="14">v1 · SessionRuntime</text>
+    <g font-size="11.5" fill="#4a5558">
+      <text x="36" y="70">entry: /api/v1/ws, POST /sessions/:id/message, WS start</text>
+      <text x="36" y="90">turns: in-memory turnQueue + TurnSemaphore (10)</text>
+      <text x="36" y="110">events: handleRunnerEvent → store-then-send</text>
+      <text x="36" y="130">on restart: turn lost; user row exists, no assistant row</text>
+      <text x="36" y="150">still the only path for: WS start, merge-worktree agent,</text><text x="36" y="166">inbox relay, start-with-first-message</text>
+      <text x="36" y="196" class="mono" font-size="11">BARRY_DISABLE_APP_PROTOCOL_V1 gates it</text>
+    </g>
+    <rect x="540" y="20" width="420" height="200" rx="8" fill="#ffffff" stroke="#1baf7a" stroke-width="1.5"/>
+    <text x="556" y="46" font-weight="700" font-size="14">v2 · TurnExecution (AG-UI)</text>
+    <g font-size="11.5" fill="#4a5558">
+      <text x="556" y="70">entry: POST /api/v2/sessions/:id/ag-ui, SSE events, /api/v2/ws</text>
+      <text x="556" y="90">turns: session_turns rows, one active per session</text>
+      <text x="556" y="110">events: session_execution_events replay log with cursors</text>
+      <text x="556" y="130">on restart: turn marked recovery_required, resumable</text>
+      <text x="556" y="150">has real approvals: session_interrupts, review_policy</text>
+      <text x="556" y="196" class="mono" font-size="11">openContinuation path skips the SDK ceiling</text>
+    </g>
+    <line x1="442" y1="100" x2="538" y2="100" stroke="#e34948" stroke-width="1.3" marker-end="url(#arS)"/>
+    <line x1="538" y1="140" x2="442" y2="140" stroke="#e34948" stroke-width="1.3" marker-end="url(#arS)"/>
+    <text x="490" y="92" text-anchor="middle" font-size="10.5" fill="#e34948">refuses if durable turn active</text>
+    <text x="490" y="156" text-anchor="middle" font-size="10.5" fill="#e34948">refuses if legacy turn running</text>
+    <text x="490" y="245" text-anchor="middle" font-size="11.5" fill="#7c8689">Every lifecycle invariant must be proven twice. The same session id can be either.</text>
+  </g>
+</svg>

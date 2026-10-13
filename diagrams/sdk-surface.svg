@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" font-family="Helvetica Neue, Arial, system-ui, sans-serif" viewBox="0 0 980 300" role="img" aria-label="Horizontal bar chart of SDK subpath import counts from cli, bags and adapters: services 215, sessions 157, adapters/harnesses 152, root 134, adapters/models 121, with internal subpaths making up about 450 of 1910 imports.">
+  <g font-size="12" fill="currentColor">
+    <text x="20" y="24" font-weight="600" font-size="13">Imports of each SDK entry from cli/, bags/, adapters/ (top five of 47 entries)</text>
+    <g class="mono" font-size="11.5" text-anchor="end">
+      <text x="230" y="60">/services</text><text x="230" y="92">/sessions</text><text x="230" y="124">/adapters/harnesses</text><text x="230" y="156">(root)</text><text x="230" y="188">/adapters/models</text><text x="230" y="230">all internal/* entries</text>
+    </g>
+    <!-- scale: 1px = 1.4 imports -> 215 => 300px ; 450 => 630 -->
+    <g fill="#0e7c86"><rect x="240" y="48" width="300" height="16" rx="3"/><rect x="240" y="80" width="219" height="16" rx="3"/><rect x="240" y="112" width="212" height="16" rx="3"/><rect x="240" y="144" width="187" height="16" rx="3"/><rect x="240" y="176" width="169" height="16" rx="3"/></g>
+    <rect x="240" y="218" width="628" height="16" rx="3" fill="#bf7a16"/>
+    <g font-size="11.5" fill="#4a5558"><text x="548" y="61">215</text><text x="467" y="93">157</text><text x="460" y="125">152</text><text x="435" y="157">134</text><text x="417" y="189">121</text><text x="876" y="231">≈450 of 1,910</text></g>
+    <text x="240" y="270" font-size="11.5" fill="#7c8689">No consumer imports sdk/src or sdk/dist directly. Enforcement is a CI reachability check, not an eslint rule.</text>
+  </g>
+</svg>

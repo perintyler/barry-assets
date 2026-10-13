@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" font-family="Helvetica Neue, Arial, system-ui, sans-serif" viewBox="0 0 980 420" role="img" aria-label="State diagram. Record state: open to closed to archived, or deleted when empty. Work status: pending to running, back to pending between turns, to completed, failed or cancelled. In-memory: starting, streaming, waiting, complete, error. Three writers (DELETE, discard-worktree, start failure) set status only and leave active=1 state=open.">
+  <defs><marker id="arL" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+  <g font-size="12" fill="currentColor">
+    <!-- record state lane -->
+    <text x="20" y="30" font-weight="600" font-size="13">Record state (sessions.state, active)</text>
+    <g fill="#ffffff" stroke="#4a3aa7" stroke-width="1.4">
+      <rect x="20" y="44" width="150" height="40" rx="20"/><rect x="300" y="44" width="150" height="40" rx="20"/><rect x="580" y="44" width="150" height="40" rx="20"/><rect x="810" y="44" width="150" height="40" rx="20"/>
+    </g>
+    <g text-anchor="middle" class="mono" font-size="12"><text x="95" y="69">open · active=0</text><text x="375" y="69">open · active=1</text><text x="655" y="69">closed · active=0</text><text x="885" y="69">archived</text></g>
+    <g stroke="currentColor" stroke-width="1.2" marker-end="url(#arL)"><line x1="172" y1="64" x2="298" y2="64"/><line x1="452" y1="64" x2="578" y2="64"/><line x1="732" y1="64" x2="808" y2="64"/></g>
+    <g font-size="10.5" fill="#7c8689" text-anchor="middle"><text x="235" y="56">startSession</text><text x="515" y="56">endSession funnel</text><text x="770" y="56">archive</text></g>
+    <path d="M655 86 C655 110 375 110 375 86" fill="none" stroke="currentColor" stroke-width="1.2" marker-end="url(#arL)"/>
+    <text x="515" y="118" text-anchor="middle" font-size="10.5" fill="#7c8689">resume re-opens</text>
+    <text x="95" y="110" text-anchor="middle" font-size="10.5" fill="#7c8689">deleted if closed with 0 messages</text>
+
+    <!-- work status lane -->
+    <text x="20" y="160" font-weight="600" font-size="13">Work status (sessions.status)</text>
+    <g fill="#ffffff" stroke="#2a78d6" stroke-width="1.4">
+      <rect x="20" y="174" width="120" height="40" rx="20"/><rect x="240" y="174" width="120" height="40" rx="20"/>
+      <rect x="520" y="174" width="130" height="40" rx="20"/><rect x="670" y="174" width="110" height="40" rx="20"/><rect x="800" y="174" width="130" height="40" rx="20"/>
+    </g>
+    <g text-anchor="middle" class="mono" font-size="12"><text x="80" y="199">pending</text><text x="300" y="199">running</text><text x="585" y="199">completed</text><text x="725" y="199">failed</text><text x="865" y="199">cancelled</text></g>
+    <line x1="142" y1="188" x2="238" y2="188" stroke="currentColor" stroke-width="1.2" marker-end="url(#arL)"/><text x="190" y="180" text-anchor="middle" font-size="10.5" fill="#7c8689">turn starts</text>
+    <line x1="238" y1="204" x2="142" y2="204" stroke="currentColor" stroke-width="1.2" marker-end="url(#arL)"/><text x="190" y="226" text-anchor="middle" font-size="10.5" fill="#7c8689">turn ends / TUI leaves</text>
+    <line x1="362" y1="188" x2="518" y2="188" stroke="currentColor" stroke-width="1.2" marker-end="url(#arL)"/><text x="440" y="180" text-anchor="middle" font-size="10.5" fill="#7c8689">stop · eviction (!)</text>
+    <path d="M362 200 C420 240 650 240 725 216" fill="none" stroke="#e34948" stroke-width="1.3" marker-end="url(#arL)"/>
+    <path d="M362 206 C440 270 790 270 865 216" fill="none" stroke="#e34948" stroke-width="1.3" marker-end="url(#arL)"/>
+    <text x="540" y="262" text-anchor="middle" font-size="10.5" fill="#e34948">turn error (closes record) · start failure (status only)</text>
+    <text x="640" y="290" text-anchor="middle" font-size="10.5" fill="#e34948">DELETE /sessions/:id · discard-worktree (status only: record stays open, active=1)</text>
+
+    <!-- in-memory lane -->
+    <text x="20" y="330" font-weight="600" font-size="13">In-memory ActiveSession.status (sessions.api only, lost on restart)</text>
+    <g fill="#ffffff" stroke="#1baf7a" stroke-width="1.4">
+      <rect x="20" y="344" width="110" height="36" rx="18"/><rect x="200" y="344" width="120" height="36" rx="18"/><rect x="390" y="344" width="110" height="36" rx="18"/><rect x="600" y="344" width="120" height="36" rx="18"/><rect x="790" y="344" width="100" height="36" rx="18"/>
+    </g>
+    <g text-anchor="middle" class="mono" font-size="12"><text x="75" y="367">starting</text><text x="260" y="367">streaming</text><text x="445" y="367">waiting</text><text x="660" y="367">complete</text><text x="840" y="367">error</text></g>
+    <g stroke="currentColor" stroke-width="1.2" marker-end="url(#arL)"><line x1="132" y1="356" x2="198" y2="356"/><line x1="322" y1="356" x2="388" y2="356"/><line x1="388" y1="368" x2="322" y2="368"/><line x1="502" y1="362" x2="598" y2="362"/><line x1="322" y1="350" x2="788" y2="350"/></g>
+    <text x="550" y="400" text-anchor="middle" font-size="10.5" fill="#7c8689">generation counter bumps on stop/remove so queued turns go stale; interrupt ends a turn as waiting; a queued turn cannot be interrupted</text>
+  </g>
+</svg>

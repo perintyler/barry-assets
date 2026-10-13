@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" font-family="Helvetica Neue, Arial, system-ui, sans-serif" viewBox="0 0 980 420" role="img" aria-label="Treemap of source lines: bags 78k (sessions 30k, telemetry 11k, mcp 8.5k, identities 6.5k, artifacts 5k, actions 4k, others), sdk 36k, cli 30k, adapters 13k.">
+  <g font-size="12.5" fill="currentColor">
+    <!-- bags block: 77.9k of 157k ≈ 49.6% -> width 486 -->
+    <rect x="10" y="10" width="486" height="400" rx="6" fill="none" stroke="#c0c8c3"/>
+    <text x="20" y="30" font-weight="700" font-size="14">bags/ · 77.9k src · 60.5k test</text>
+    <!-- sessions 30.4k of 77.9k ≈ 39% of area -->
+    <rect x="18" y="40" width="200" height="362" rx="4" fill="#2a78d6" opacity=".85"/>
+    <text x="28" y="62" fill="#fff" font-weight="600">sessions</text><text x="28" y="80" fill="#fff" class="mono" font-size="11.5">30.4k · api 15.1k</text>
+    <text x="28" y="98" fill="#fff" font-size="11.5">19 migrations · ~76 routes</text>
+    <!-- telemetry 11k -->
+    <rect x="226" y="40" width="130" height="200" rx="4" fill="#2a78d6" opacity=".7"/>
+    <text x="234" y="62" fill="#fff" font-weight="600">telemetry</text><text x="234" y="80" fill="#fff" class="mono" font-size="11.5">11.0k</text><text x="234" y="98" fill="#fff" font-size="11.5">4 stores · web UI</text>
+    <!-- mcp 8.5k -->
+    <rect x="364" y="40" width="124" height="160" rx="4" fill="#2a78d6" opacity=".7"/>
+    <text x="372" y="62" fill="#fff" font-weight="600">mcp</text><text x="372" y="80" fill="#fff" class="mono" font-size="11.5">8.5k</text><text x="372" y="98" fill="#fff" font-size="11.5">the tool host</text>
+    <!-- identities 6.5k -->
+    <rect x="226" y="248" width="130" height="154" rx="4" fill="#2a78d6" opacity=".55"/>
+    <text x="234" y="270" fill="#fff" font-weight="600">identities</text><text x="234" y="288" fill="#fff" class="mono" font-size="11.5">6.5k</text>
+    <!-- artifacts 5.1k, actions 4.3k -->
+    <rect x="364" y="208" width="124" height="90" rx="4" fill="#2a78d6" opacity=".55"/>
+    <text x="372" y="230" fill="#fff" font-weight="600">artifacts</text><text x="372" y="248" fill="#fff" class="mono" font-size="11.5">5.1k</text>
+    <rect x="364" y="306" width="124" height="96" rx="4" fill="#2a78d6" opacity=".45"/>
+    <text x="372" y="328" fill="#fff" font-weight="600">actions · 4.3k</text><text x="372" y="346" fill="#fff" font-size="11">schedules 2.6k · filesystem 2.3k</text><text x="372" y="362" fill="#fff" font-size="11">memory 1.7k · workflows 1.4k</text><text x="372" y="378" fill="#fff" font-size="11">vault 1.3k · events 1.2k</text><text x="372" y="394" fill="#fff" font-size="11">6 bags under 600 lines</text>
+
+    <!-- sdk 36.3k ≈ 23% -> width 225 -->
+    <rect x="504" y="10" width="226" height="400" rx="6" fill="#1baf7a" opacity=".8"/>
+    <text x="514" y="30" fill="#fff" font-weight="700" font-size="14">sdk/</text>
+    <text x="514" y="50" fill="#fff" class="mono" font-size="11.5">36.3k src · 25.0k test</text>
+    <g fill="#fff" font-size="11.5">
+      <text x="514" y="78">bags 4.9k · actions 3.0k</text><text x="514" y="96">adapters 2.9k · workflows 2.7k</text><text x="514" y="114">bounds 2.5k · stores 2.3k</text><text x="514" y="132">services 2.0k · sessions 2.0k</text><text x="514" y="150">tools 1.8k · barry 1.4k · vault 1.4k</text><text x="514" y="168">env, client, mcp, auth, …</text>
+      <text x="514" y="200" font-weight="600">24 public + 22 internal subpaths</text>
+      <text x="514" y="218">1,910 imports from consumers,</text><text x="514" y="236">0 deep imports</text>
+    </g>
+
+    <!-- cli 30k ≈ 19% -> width 188; adapters 13k ≈ 8% -> width 52 ... stack them vertically instead -->
+    <rect x="738" y="10" width="232" height="268" rx="6" fill="#eb6834" opacity=".8"/>
+    <text x="748" y="30" fill="#fff" font-weight="700" font-size="14">cli/</text>
+    <text x="748" y="50" fill="#fff" class="mono" font-size="11.5">30.0k src · 18.8k test</text>
+    <g fill="#fff" font-size="11.5">
+      <text x="748" y="78">commands/bag.ts 3,024 lines</text><text x="748" y="96">commands/start.ts 1,939</text><text x="748" y="114">main.ts 1,433</text><text x="748" y="140">composition root: imports</text><text x="748" y="158">every bag and adapter</text><text x="748" y="184">~130 commands and</text><text x="748" y="202">subcommands</text>
+    </g>
+    <rect x="738" y="286" width="232" height="124" rx="6" fill="#eda100" opacity=".85"/>
+    <text x="748" y="306" fill="#fff" font-weight="700" font-size="14">adapters/</text>
+    <text x="748" y="326" fill="#fff" class="mono" font-size="11.5">13.0k src · 8.8k test</text>
+    <g fill="#fff" font-size="11.5"><text x="748" y="350">6 harnesses 11.0k</text><text x="748" y="368">3 completions · 5 decisions</text><text x="748" y="386">1 embeddings · qa runner</text></g>
+  </g>
+</svg>

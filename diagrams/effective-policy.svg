@@ -1,0 +1,45 @@
+<svg viewBox="0 0 980 330" role="img" aria-label="Pipeline: identity.yaml and bag.yaml are parsed into traits and bounds rows; at session start the selected traits expand to namespaces, bounds merge (denials union, allowlists intersect), producing an effective bound and allowed tool ids; three enforcement points consume it: filterTools in the MCP host, applyBoundGuards at call time, and the harness native-tool ceiling plus hook gate; optional egress sandbox." xmlns="http://www.w3.org/2000/svg" color="#151b1e" font-family="Helvetica Neue, Arial, system-ui, sans-serif" font-size="12"><rect x="-5" y="-5" width="990" height="340" fill="#ffffff"/>
+  <defs><marker id="arP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+  <g font-size="12" fill="currentColor">
+    <!-- sources -->
+    <g fill="#ffffff" stroke="#4a3aa7" stroke-width="1.3">
+      <rect x="20" y="30" width="150" height="50" rx="5"/><rect x="20" y="100" width="150" height="50" rx="5"/><rect x="20" y="170" width="150" height="50" rx="5"/>
+    </g>
+    <g text-anchor="middle" class="mono" font-size="11.5">
+      <text x="95" y="51">identity.yaml</text><text x="95" y="68" font-size="10.5" fill="#7c8689">+ parent chain</text>
+      <text x="95" y="121">bag.yaml traits/bounds</text><text x="95" y="138" font-size="10.5" fill="#7c8689">qualified bag:name</text>
+      <text x="95" y="191">session request</text><text x="95" y="208" font-size="10.5" fill="#7c8689">--traits --bound --read</text>
+    </g>
+    <!-- resolve box -->
+    <rect x="230" y="30" width="230" height="190" rx="6" fill="#ffffff" stroke="#0e7c86" stroke-width="1.5"/>
+    <text x="345" y="54" text-anchor="middle" font-weight="600">Resolution (identities + sdk/bounds)</text>
+    <g font-size="11.5" fill="#4a5558">
+      <text x="244" y="78">1 expandTraitNames: includes,</text><text x="244" y="93">   automatic per-bag traits</text>
+      <text x="244" y="115">2 namespaces ∪ per-tool grants</text>
+      <text x="244" y="137">3 mergeBounds: denials ∪,</text><text x="244" y="152">   allowlists ∩, enforce = max</text>
+      <text x="244" y="174">4 native ceiling per harness:</text><text x="244" y="189">   requested ∩ grantable ∖ denied</text>
+      <text x="244" y="211">5 refuse unenforceable bounds</text>
+    </g>
+    <g stroke="currentColor" stroke-width="1.1" opacity=".6" marker-end="url(#arP)">
+      <line x1="172" y1="55" x2="228" y2="80"/><line x1="172" y1="125" x2="228" y2="120"/><line x1="172" y1="195" x2="228" y2="170"/>
+    </g>
+    <!-- effective -->
+    <rect x="510" y="70" width="170" height="110" rx="6" fill="#d9eef0" stroke="#0e7c86" stroke-width="1.5"/>
+    <text x="595" y="92" text-anchor="middle" font-weight="600">Effective policy</text>
+    <g class="mono" font-size="11" text-anchor="middle"><text x="595" y="112">allowedToolIds</text><text x="595" y="128">effective Bound</text><text x="595" y="144">allowedNativeTools</text><text x="595" y="160">deniedTools</text></g>
+    <line x1="462" y1="125" x2="508" y2="125" stroke="currentColor" stroke-width="1.2" marker-end="url(#arP)"/>
+    <!-- enforcement -->
+    <g fill="#ffffff" stroke="#e34948" stroke-width="1.3">
+      <rect x="740" y="20" width="220" height="60" rx="5"/><rect x="740" y="96" width="220" height="60" rx="5"/><rect x="740" y="172" width="220" height="60" rx="5"/><rect x="740" y="248" width="220" height="60" rx="5"/>
+    </g>
+    <g font-size="11.5">
+      <text x="752" y="40" font-weight="600">filterTools · MCP host</text><text x="752" y="56" fill="#4a5558">tools/list shows only granted</text><text x="752" y="70" fill="#4a5558">namespaces and access modes</text>
+      <text x="752" y="116" font-weight="600">applyBoundGuards · call time</text><text x="752" y="132" fill="#4a5558">file globs, bash classifier,</text><text x="752" y="146" fill="#4a5558">network actions and domains</text>
+      <text x="752" y="192" font-weight="600">Native ceiling + hook gate</text><text x="752" y="208" fill="#4a5558">settings deny rules; a generated</text><text x="752" y="222" fill="#4a5558">gate script with a static allow set</text>
+      <text x="752" y="268" font-weight="600">Egress sandbox (optional)</text><text x="752" y="284" fill="#4a5558">hostname proxy when enforce:</text><text x="752" y="298" fill="#4a5558">sandbox and the harness supports it</text>
+    </g>
+    <g stroke="currentColor" stroke-width="1.1" opacity=".6" marker-end="url(#arP)">
+      <line x1="682" y1="100" x2="738" y2="52"/><line x1="682" y1="120" x2="738" y2="124"/><line x1="682" y1="150" x2="738" y2="198"/><line x1="682" y1="170" x2="738" y2="272"/>
+    </g>
+    </g>
+</svg>

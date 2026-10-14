@@ -37,7 +37,7 @@
       <rect x="560" y="40" width="160" height="34" rx="5"/><rect x="560" y="84" width="160" height="34" rx="5"/>
     </g>
     <g text-anchor="middle" font-family="SF Mono, Menlo, Consolas, ui-monospace, monospace" font-size="12">
-      <text x="640" y="62">readonly</text><text x="640" y="106">no-secrets</text>
+      <text x="640" y="62">readonly</text><text x="640" y="106">no-egress</text>
     </g>
     <text x="640" y="134" text-anchor="middle" font-size="11.5" fill="#7c8689">deniedTools · deniedAccess</text>
     <text x="640" y="149" text-anchor="middle" font-size="11.5" fill="#7c8689">files · bash · network · native</text>

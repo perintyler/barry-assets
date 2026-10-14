@@ -1,0 +1,124 @@
+<svg viewBox="0 0 980 330" role="img" aria-label="Barry is a control layer between coding-agent harnesses and bags. Harnesses (Claude Code, Codex, Cursor, OpenCode, Pi, Antigravity) send tool calls to Barry and receive allow or deny. Inside Barry, identity.yaml resolves to an effective policy where traits enable and bounds restrict; a session in any harness has its tool list filtered, every call ruled, and everything recorded; actions, schedules and workers run work under the same policy while you are away. Bags on the right hold tools, stores, services, apps, actions, schedules and other bags; packing a bag creates a trait, its tools are served over one MCP server, and its actions and schedules are declared in the bag." xmlns="http://www.w3.org/2000/svg" color="#151b1e" font-family="Helvetica Neue, Arial, system-ui, sans-serif" font-size="12"><rect x="-5" y="-5" width="990" height="340" fill="#ffffff"/>
+  <defs><marker id="arP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+  <g fill="currentColor">
+
+    <!-- harnesses -->
+    <text x="80" y="52" text-anchor="middle" font-weight="600">Harnesses</text>
+    <g fill="#ffffff" stroke="#4a3aa7" stroke-width="1.3">
+      <rect x="20" y="68" width="120" height="28" rx="5"/>
+      <rect x="20" y="104" width="120" height="28" rx="5"/>
+      <rect x="20" y="140" width="120" height="28" rx="5"/>
+      <rect x="20" y="176" width="120" height="28" rx="5"/>
+      <rect x="20" y="212" width="120" height="28" rx="5"/>
+      <rect x="20" y="248" width="120" height="28" rx="5"/>
+    </g>
+    <g text-anchor="middle" font-size="11.5">
+      <text x="80" y="86">Claude Code</text>
+      <text x="80" y="122">Codex</text>
+      <text x="80" y="158">Cursor</text>
+      <text x="80" y="194">OpenCode</text>
+      <text x="80" y="230">Pi</text>
+      <text x="80" y="266">Antigravity</text>
+    </g>
+    <!-- bracket joining the harnesses -->
+    <g stroke="currentColor" stroke-width="1.1" opacity=".6" fill="none">
+      <path d="M142 82 H150 V262 H142"/>
+      <line x1="142" y1="118" x2="150" y2="118"/>
+      <line x1="142" y1="154" x2="150" y2="154"/>
+      <line x1="142" y1="190" x2="150" y2="190"/>
+      <line x1="142" y1="226" x2="150" y2="226"/>
+    </g>
+    <g stroke="currentColor" stroke-width="1.1" opacity=".6" marker-end="url(#arP)">
+      <line x1="152" y1="165" x2="246" y2="165"/>
+      <line x1="246" y1="185" x2="152" y2="185"/>
+    </g>
+    <g text-anchor="middle" font-size="10.5" fill="#7c8689">
+      <text x="199" y="158">tool calls</text>
+      <text x="199" y="200">allow / deny</text>
+    </g>
+
+    <!-- Barry -->
+    <rect x="230" y="40" width="470" height="270" rx="6" fill="#ffffff" stroke="#0e7c86" stroke-width="1.5"/>
+    <text x="246" y="62" font-weight="600" font-size="14">Barry</text>
+    <text x="292" y="62" font-size="11.5" fill="#7c8689">the control layer</text>
+
+    <!-- row A: identity -> policy -->
+    <rect x="250" y="78" width="140" height="48" rx="5" fill="#ffffff" stroke="#0e7c86" stroke-width="1.3"/>
+    <text x="320" y="98" text-anchor="middle" font-size="11.5">identity.yaml</text>
+    <text x="320" y="115" text-anchor="middle" font-size="10.5" fill="#7c8689">bags · traits · bounds</text>
+    <g stroke="currentColor" stroke-width="1.1" opacity=".6" marker-end="url(#arP)"><line x1="392" y1="102" x2="428" y2="102"/></g>
+    <rect x="430" y="78" width="170" height="48" rx="5" fill="#d9eef0" stroke="#0e7c86" stroke-width="1.5"/>
+    <text x="515" y="98" text-anchor="middle" font-weight="600">Effective policy</text>
+    <text x="515" y="115" text-anchor="middle" font-size="10.5" fill="#4a5558">traits enable, bounds restrict</text>
+    <text x="690" y="140" text-anchor="end" font-size="10.5" fill="#7c8689">denials beat grants · fails closed</text>
+    <g stroke="currentColor" stroke-width="1.1" opacity=".6" marker-end="url(#arP)"><line x1="515" y1="128" x2="515" y2="148"/></g>
+
+    <!-- row B: a session -->
+    <text x="250" y="143" font-size="10.5" fill="#7c8689">a session, in any harness</text>
+    <rect x="250" y="150" width="440" height="50" rx="5" fill="#ffffff" stroke="#0e7c86" stroke-width="1.3"/>
+    <g fill="#e9f3f4">
+      <rect x="258" y="160" width="136" height="30" rx="4"/>
+      <rect x="402" y="160" width="136" height="30" rx="4"/>
+      <rect x="546" y="160" width="136" height="30" rx="4"/>
+    </g>
+    <g text-anchor="middle" font-size="11.5">
+      <text x="326" y="179">filter the tool list</text>
+      <text x="470" y="179">rule every call</text>
+      <text x="614" y="179">record everything</text>
+    </g>
+
+    <!-- row C: unattended work -->
+    <text x="250" y="231" font-size="10.5" fill="#7c8689">work that runs while you're away, under the same policy</text>
+    <g fill="#ffffff" stroke="#0e7c86" stroke-width="1.3">
+      <rect x="258" y="240" width="130" height="50" rx="5"/>
+      <rect x="410" y="240" width="130" height="50" rx="5"/>
+      <rect x="562" y="240" width="130" height="50" rx="5"/>
+    </g>
+    <g text-anchor="middle">
+      <text x="323" y="260" font-weight="600" font-size="11.5">Actions</text>
+      <text x="323" y="277" font-size="10.5" fill="#7c8689">inputs · outputs · model</text>
+      <text x="475" y="260" font-weight="600" font-size="11.5">Schedules</text>
+      <text x="475" y="277" font-size="10.5" fill="#7c8689">cron · once · at login</text>
+      <text x="627" y="260" font-weight="600" font-size="11.5">Workers</text>
+      <text x="627" y="277" font-size="10.5" fill="#7c8689">other machines, retried</text>
+    </g>
+    <g stroke="currentColor" stroke-width="1.1" opacity=".6" marker-end="url(#arP)">
+      <line x1="390" y1="265" x2="408" y2="265"/>
+      <line x1="542" y1="265" x2="560" y2="265"/>
+    </g>
+
+    <!-- bags -->
+    <text x="870" y="52" text-anchor="middle" font-weight="600">Bags</text>
+    <rect x="780" y="68" width="180" height="222" rx="6" fill="#ffffff" stroke="#4a3aa7" stroke-width="1.3"/>
+    <g fill="#ffffff" stroke="#4a3aa7" stroke-width="1.1">
+      <rect x="792" y="80" width="156" height="22" rx="4"/>
+      <rect x="792" y="108" width="156" height="22" rx="4"/>
+      <rect x="792" y="136" width="156" height="22" rx="4"/>
+      <rect x="792" y="164" width="156" height="22" rx="4"/>
+    </g>
+    <g text-anchor="middle" font-size="11">
+      <text x="870" y="95">tools</text>
+      <text x="870" y="123">stores · services · apps</text>
+      <text x="870" y="151">actions · schedules</text>
+      <text x="870" y="179">instructions</text>
+    </g>
+    <rect x="792" y="198" width="156" height="80" rx="5" fill="#ffffff" stroke="#4a3aa7" stroke-width="1.1" stroke-dasharray="3 2"/>
+    <text x="870" y="216" text-anchor="middle" font-size="11">other bags</text>
+    <rect x="806" y="226" width="128" height="40" rx="4" fill="#ffffff" stroke="#4a3aa7" stroke-width="1.1" stroke-dasharray="3 2"/>
+    <text x="870" y="250" text-anchor="middle" font-size="10.5" fill="#7c8689">bags in bags</text>
+
+    <!-- bags -> Barry -->
+    <g stroke="currentColor" stroke-width="1.1" opacity=".6" marker-end="url(#arP)">
+      <line x1="778" y1="102" x2="602" y2="102"/>
+      <line x1="778" y1="175" x2="692" y2="175"/>
+      <line x1="778" y1="265" x2="694" y2="265"/>
+    </g>
+    <g text-anchor="middle" font-size="10.5" fill="#7c8689">
+      <text x="740" y="95">pack → a trait</text>
+      <text x="735" y="168">tools</text>
+      <text x="735" y="190">one MCP server</text>
+      <text x="736" y="258">declared</text>
+      <text x="736" y="280">in the bag</text>
+    </g>
+  </g>
+</svg>

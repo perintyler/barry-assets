@@ -1,124 +1,164 @@
-<svg viewBox="0 0 980 330" role="img" aria-label="Barry is a control layer between coding-agent harnesses and bags. Harnesses (Claude Code, Codex, Cursor, OpenCode, Pi, Antigravity) send tool calls to Barry and receive allow or deny. Inside Barry, identity.yaml resolves to an effective policy where traits enable and bounds restrict; a session in any harness has its tool list filtered, every call ruled, and everything recorded; actions, schedules and workers run work under the same policy while you are away. Bags on the right hold tools, stores, services, apps, actions, schedules and other bags; packing a bag creates a trait, its tools are served over one MCP server, and its actions and schedules are declared in the bag." xmlns="http://www.w3.org/2000/svg" color="#151b1e" font-family="Helvetica Neue, Arial, system-ui, sans-serif" font-size="12"><rect x="-5" y="-5" width="990" height="340" fill="#ffffff"/>
-  <defs><marker id="arP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="currentColor"/></marker></defs>
+<svg viewBox="0 0 980 420" role="img" aria-label="Barry architecture under ADR 0001. Clients (CLI, btui, Browser UI, Native app) enter exclusively through Barry Edge (_barryedge) into Barry Net on the host. Inside Barry Net, host services and bags (identities, sessions.api, mcp.server, workflows.runtime, and generated Agent Object routes) connect to Agent Gateway (_barrygateway). Agent Gateway is the only door to the Agent Bullpen (the always-on Sessions VM running isolated sandboxes), mediating all model, tool, and egress traffic. Agent Gateway fetches secrets and token signing from Agent Vault (_barryvault), which never enters the bullpen, and routes credentialed outbound egress through Barry Edge to external models and APIs." xmlns="http://www.w3.org/2000/svg" color="#151b1e" font-family="Helvetica Neue, Arial, system-ui, sans-serif" font-size="12">
+  <rect x="-5" y="-5" width="990" height="430" fill="#ffffff"/>
+  <defs>
+    <marker id="arP" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0 1L9 5L0 9z" fill="#5b666b"/>
+    </marker>
+    <marker id="arTeal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0 1L9 5L0 9z" fill="#0e7c86"/>
+    </marker>
+    <marker id="arAmber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0 1L9 5L0 9z" fill="#b45309"/>
+    </marker>
+  </defs>
+
   <g fill="currentColor">
-
-    <!-- harnesses -->
-    <text x="80" y="52" text-anchor="middle" font-weight="600">Harnesses</text>
+    <!-- Left column: Clients -->
+    <text x="80" y="34" text-anchor="middle" font-weight="600" font-size="12">Clients</text>
+    <text x="80" y="48" text-anchor="middle" font-size="10" fill="#7c8689">host or tailnet</text>
     <g fill="#ffffff" stroke="#4a3aa7" stroke-width="1.3">
-      <rect x="20" y="68" width="120" height="28" rx="5"/>
-      <rect x="20" y="104" width="120" height="28" rx="5"/>
-      <rect x="20" y="140" width="120" height="28" rx="5"/>
-      <rect x="20" y="176" width="120" height="28" rx="5"/>
-      <rect x="20" y="212" width="120" height="28" rx="5"/>
-      <rect x="20" y="248" width="120" height="28" rx="5"/>
+      <rect x="20" y="60" width="120" height="30" rx="5"/>
+      <rect x="20" y="98" width="120" height="30" rx="5"/>
+      <rect x="20" y="136" width="120" height="30" rx="5"/>
+      <rect x="20" y="174" width="120" height="30" rx="5"/>
     </g>
     <g text-anchor="middle" font-size="11.5">
-      <text x="80" y="86">Claude Code</text>
-      <text x="80" y="122">Codex</text>
-      <text x="80" y="158">Cursor</text>
-      <text x="80" y="194">OpenCode</text>
-      <text x="80" y="230">Pi</text>
-      <text x="80" y="266">Antigravity</text>
-    </g>
-    <!-- bracket joining the harnesses -->
-    <g stroke="currentColor" stroke-width="1.1" opacity=".6" fill="none">
-      <path d="M142 82 H150 V262 H142"/>
-      <line x1="142" y1="118" x2="150" y2="118"/>
-      <line x1="142" y1="154" x2="150" y2="154"/>
-      <line x1="142" y1="190" x2="150" y2="190"/>
-      <line x1="142" y1="226" x2="150" y2="226"/>
-    </g>
-    <g stroke="currentColor" stroke-width="1.1" opacity=".6" marker-end="url(#arP)">
-      <line x1="152" y1="165" x2="246" y2="165"/>
-      <line x1="246" y1="185" x2="152" y2="185"/>
-    </g>
-    <g text-anchor="middle" font-size="10.5" fill="#7c8689">
-      <text x="199" y="158">tool calls</text>
-      <text x="199" y="200">allow / deny</text>
+      <text x="80" y="79">CLI</text>
+      <text x="80" y="117" font-family="ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, monospace">btui</text>
+      <text x="80" y="155">Browser UI</text>
+      <text x="80" y="193">Native app</text>
     </g>
 
-    <!-- Barry -->
-    <rect x="230" y="40" width="470" height="270" rx="6" fill="#ffffff" stroke="#0e7c86" stroke-width="1.5"/>
-    <text x="246" y="62" font-weight="600" font-size="14">Barry</text>
-    <text x="292" y="62" font-size="11.5" fill="#7c8689">the control layer</text>
+    <!-- Bracket joining Clients -> Barry Edge -->
+    <g stroke="#5b666b" stroke-width="1.2" fill="none">
+      <path d="M142 75 H150 V189 H142"/>
+      <line x1="142" y1="113" x2="150" y2="113"/>
+      <line x1="142" y1="151" x2="150" y2="151"/>
+    </g>
+    <line x1="150" y1="132" x2="202" y2="132" stroke="#5b666b" stroke-width="1.2" marker-end="url(#arP)"/>
+    <text x="176" y="124" text-anchor="middle" font-size="10" fill="#5b666b">auth</text>
 
-    <!-- row A: identity -> policy -->
-    <rect x="250" y="78" width="140" height="48" rx="5" fill="#ffffff" stroke="#0e7c86" stroke-width="1.3"/>
-    <text x="320" y="98" text-anchor="middle" font-size="11.5">identity.yaml</text>
-    <text x="320" y="115" text-anchor="middle" font-size="10.5" fill="#7c8689">bags · traits · bounds</text>
-    <g stroke="currentColor" stroke-width="1.1" opacity=".6" marker-end="url(#arP)"><line x1="392" y1="102" x2="428" y2="102"/></g>
-    <rect x="430" y="78" width="170" height="48" rx="5" fill="#d9eef0" stroke="#0e7c86" stroke-width="1.5"/>
-    <text x="515" y="98" text-anchor="middle" font-weight="600">Effective policy</text>
-    <text x="515" y="115" text-anchor="middle" font-size="10.5" fill="#4a5558">traits enable, bounds restrict</text>
-    <text x="690" y="140" text-anchor="end" font-size="10.5" fill="#7c8689">denials beat grants · fails closed</text>
-    <g stroke="currentColor" stroke-width="1.1" opacity=".6" marker-end="url(#arP)"><line x1="515" y1="128" x2="515" y2="148"/></g>
+    <!-- Left bottom: External Models & APIs (egress destination) -->
+    <rect x="20" y="284" width="120" height="72" rx="6" fill="#f8fafb" stroke="#7c8689" stroke-width="1.2" stroke-dasharray="4 3"/>
+    <text x="80" y="308" text-anchor="middle" font-weight="600" font-size="11.5">External</text>
+    <text x="80" y="325" text-anchor="middle" font-size="10.5" fill="#4a5558">Models &amp; APIs</text>
+    <text x="80" y="342" text-anchor="middle" font-size="9.5" fill="#7c8689">allow-listed only</text>
 
-    <!-- row B: a session -->
-    <text x="250" y="143" font-size="10.5" fill="#7c8689">a session, in any harness</text>
-    <rect x="250" y="150" width="440" height="50" rx="5" fill="#ffffff" stroke="#0e7c86" stroke-width="1.3"/>
-    <g fill="#e9f3f4">
-      <rect x="258" y="160" width="136" height="30" rx="4"/>
-      <rect x="402" y="160" width="136" height="30" rx="4"/>
-      <rect x="546" y="160" width="136" height="30" rx="4"/>
+    <!-- Barry Edge -> External Models & APIs -->
+    <line x1="204" y1="320" x2="144" y2="320" stroke="#0e7c86" stroke-width="1.2" marker-end="url(#arTeal)"/>
+    <text x="174" y="312" text-anchor="middle" font-size="10" fill="#0e7c86">egress</text>
+
+    <!-- Barry Net outer container -->
+    <rect x="190" y="16" width="774" height="388" rx="8" fill="#fafdfd" stroke="#0e7c86" stroke-width="1.6"/>
+    <text x="206" y="38" font-weight="600" font-size="13.5">Barry Net</text>
+    <text x="278" y="38" font-size="11" fill="#7c8689">on the host · only clients live outside</text>
+
+    <!-- Barry Edge -->
+    <rect x="206" y="54" width="138" height="334" rx="6" fill="#d9eef0" stroke="#0e7c86" stroke-width="1.5"/>
+    <text x="275" y="78" text-anchor="middle" font-weight="600" font-size="12.5">Barry Edge</text>
+    <text x="275" y="96" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, monospace" font-size="10.5" fill="#0e7c86">_barryedge</text>
+
+    <rect x="216" y="112" width="118" height="72" rx="5" fill="#ffffff" stroke="#0e7c86" stroke-width="1.1"/>
+    <text x="275" y="131" text-anchor="middle" font-weight="600" font-size="11">Client Entrance</text>
+    <text x="275" y="148" text-anchor="middle" font-size="10" fill="#4a5558">only way in for</text>
+    <text x="275" y="162" text-anchor="middle" font-size="10" fill="#4a5558">every client</text>
+    <text x="275" y="176" text-anchor="middle" font-size="9.5" fill="#7c8689">TLS &amp; tailnet auth</text>
+
+    <rect x="216" y="232" width="118" height="140" rx="5" fill="#ffffff" stroke="#0e7c86" stroke-width="1.1"/>
+    <text x="275" y="256" text-anchor="middle" font-weight="600" font-size="11">Outbound Egress</text>
+    <text x="275" y="276" text-anchor="middle" font-size="10" fill="#4a5558">allow-listed hosts</text>
+    <text x="275" y="294" text-anchor="middle" font-size="10" fill="#4a5558">receives</text>
+    <text x="275" y="309" text-anchor="middle" font-size="10" fill="#4a5558">credentialed</text>
+    <text x="275" y="324" text-anchor="middle" font-size="10" fill="#4a5558">requests from</text>
+    <text x="275" y="339" text-anchor="middle" font-size="10" fill="#4a5558">Agent Gateway</text>
+    <text x="275" y="361" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, monospace" font-size="9.5" fill="#7c8689">edge.entrance</text>
+
+    <!-- Barry Edge -> Host Services -->
+    <line x1="344" y1="142" x2="386" y2="142" stroke="#5b666b" stroke-width="1.2" marker-end="url(#arP)"/>
+
+    <!-- Host Services & Bags -->
+    <rect x="388" y="54" width="206" height="178" rx="6" fill="#ffffff" stroke="#4a3aa7" stroke-width="1.4"/>
+    <text x="491" y="74" text-anchor="middle" font-weight="600" font-size="12">Host Services &amp; Bags</text>
+    <g fill="#f5f3fc" stroke="#4a3aa7" stroke-width="1">
+      <rect x="400" y="84" width="182" height="24" rx="4"/>
+      <rect x="400" y="112" width="182" height="24" rx="4"/>
+      <rect x="400" y="140" width="182" height="24" rx="4"/>
+      <rect x="400" y="168" width="182" height="24" rx="4"/>
+      <rect x="400" y="196" width="182" height="26" rx="4"/>
     </g>
-    <g text-anchor="middle" font-size="11.5">
-      <text x="326" y="179">filter the tool list</text>
-      <text x="470" y="179">rule every call</text>
-      <text x="614" y="179">record everything</text>
+    <g text-anchor="middle" font-family="ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, monospace" font-size="11">
+      <text x="491" y="100">identities</text>
+      <text x="491" y="128">sessions.api</text>
+      <text x="491" y="156">mcp.server</text>
+      <text x="491" y="184">workflows.runtime</text>
+    </g>
+    <text x="491" y="213" text-anchor="middle" font-size="10.5" fill="#151b1e">generated Agent Object routes</text>
+
+    <!-- Host Services <-> Agent Gateway -->
+    <line x1="594" y1="122" x2="646" y2="122" stroke="#5b666b" stroke-width="1.2" marker-end="url(#arP)"/>
+    <line x1="648" y1="146" x2="596" y2="146" stroke="#5b666b" stroke-width="1.2" marker-end="url(#arP)"/>
+    <text x="621" y="115" text-anchor="middle" font-size="9.5" fill="#5b666b">sessions</text>
+    <text x="621" y="160" text-anchor="middle" font-size="9.5" fill="#5b666b">tools</text>
+
+    <!-- Agent Vault -->
+    <rect x="388" y="284" width="206" height="104" rx="6" fill="#fef7ec" stroke="#b45309" stroke-width="1.4"/>
+    <text x="491" y="306" text-anchor="middle" font-weight="600" font-size="12.5">Agent Vault</text>
+    <text x="491" y="323" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, monospace" font-size="10.5" fill="#b45309">_barryvault</text>
+    <text x="491" y="344" text-anchor="middle" font-size="10.5" fill="#4a5558">secrets &amp; token signing</text>
+    <text x="491" y="360" text-anchor="middle" font-size="10" fill="#7c8689">gateway is only runtime caller</text>
+    <text x="491" y="375" text-anchor="middle" font-size="10" fill="#7c8689">never enters the bullpen</text>
+
+    <!-- Agent Gateway -->
+    <rect x="650" y="54" width="298" height="156" rx="6" fill="#d9eef0" stroke="#0e7c86" stroke-width="1.5"/>
+    <text x="799" y="76" text-anchor="middle" font-weight="600" font-size="12.5">Agent Gateway</text>
+    <text x="799" y="93" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, monospace" font-size="10.5" fill="#0e7c86">_barrygateway</text>
+    <text x="799" y="110" text-anchor="middle" font-size="10.5" fill="#4a5558">the bullpen's only door, in both directions</text>
+
+    <g fill="#ffffff" stroke="#0e7c86" stroke-width="1.1">
+      <rect x="664" y="122" width="130" height="34" rx="4"/>
+      <rect x="804" y="122" width="130" height="34" rx="4"/>
+      <rect x="664" y="164" width="270" height="34" rx="4"/>
+    </g>
+    <g text-anchor="middle" font-size="10.5">
+      <text x="729" y="137" font-weight="600">Bounds &amp; Tools</text>
+      <text x="729" y="150" font-size="9.5" fill="#7c8689">deny wins · fails closed</text>
+      <text x="869" y="137" font-weight="600">Model Metering</text>
+      <text x="869" y="150" font-size="9.5" fill="#7c8689">inspected &amp; bounded</text>
+      <text x="799" y="179" font-weight="600">Credential Injection &amp; Egress Mediation</text>
+      <text x="799" y="192" font-size="9.5" fill="#7c8689">swaps placeholders for vault secrets on the way out</text>
     </g>
 
-    <!-- row C: unattended work -->
-    <text x="250" y="231" font-size="10.5" fill="#7c8689">work that runs while you're away, under the same policy</text>
-    <g fill="#ffffff" stroke="#0e7c86" stroke-width="1.3">
-      <rect x="258" y="240" width="130" height="50" rx="5"/>
-      <rect x="410" y="240" width="130" height="50" rx="5"/>
-      <rect x="562" y="240" width="130" height="50" rx="5"/>
-    </g>
-    <g text-anchor="middle">
-      <text x="323" y="260" font-weight="600" font-size="11.5">Actions</text>
-      <text x="323" y="277" font-size="10.5" fill="#7c8689">inputs · outputs · model</text>
-      <text x="475" y="260" font-weight="600" font-size="11.5">Schedules</text>
-      <text x="475" y="277" font-size="10.5" fill="#7c8689">cron · once · at login</text>
-      <text x="627" y="260" font-weight="600" font-size="11.5">Workers</text>
-      <text x="627" y="277" font-size="10.5" fill="#7c8689">other machines, retried</text>
-    </g>
-    <g stroke="currentColor" stroke-width="1.1" opacity=".6" marker-end="url(#arP)">
-      <line x1="390" y1="265" x2="408" y2="265"/>
-      <line x1="542" y1="265" x2="560" y2="265"/>
-    </g>
+    <!-- Agent Gateway -> Barry Edge (credentialed egress, planar channel y=256) -->
+    <path d="M650 192 H622 V256 H346" fill="none" stroke="#0e7c86" stroke-width="1.3" marker-end="url(#arTeal)"/>
+    <text x="488" y="249" text-anchor="middle" font-size="10" fill="#0e7c86">credentialed model &amp; tool egress</text>
 
-    <!-- bags -->
-    <text x="870" y="52" text-anchor="middle" font-weight="600">Bags</text>
-    <rect x="780" y="68" width="180" height="222" rx="6" fill="#ffffff" stroke="#4a3aa7" stroke-width="1.3"/>
-    <g fill="#ffffff" stroke="#4a3aa7" stroke-width="1.1">
-      <rect x="792" y="80" width="156" height="22" rx="4"/>
-      <rect x="792" y="108" width="156" height="22" rx="4"/>
-      <rect x="792" y="136" width="156" height="22" rx="4"/>
-      <rect x="792" y="164" width="156" height="22" rx="4"/>
-    </g>
-    <g text-anchor="middle" font-size="11">
-      <text x="870" y="95">tools</text>
-      <text x="870" y="123">stores · services · apps</text>
-      <text x="870" y="151">actions · schedules</text>
-      <text x="870" y="179">instructions</text>
-    </g>
-    <rect x="792" y="198" width="156" height="80" rx="5" fill="#ffffff" stroke="#4a3aa7" stroke-width="1.1" stroke-dasharray="3 2"/>
-    <text x="870" y="216" text-anchor="middle" font-size="11">other bags</text>
-    <rect x="806" y="226" width="128" height="40" rx="4" fill="#ffffff" stroke="#4a3aa7" stroke-width="1.1" stroke-dasharray="3 2"/>
-    <text x="870" y="250" text-anchor="middle" font-size="10.5" fill="#7c8689">bags in bags</text>
+    <!-- Agent Gateway -> Agent Vault (planar channel x=676 -> y=336) -->
+    <path d="M676 210 V336 H596" fill="none" stroke="#b45309" stroke-width="1.3" marker-end="url(#arAmber)"/>
+    <text x="636" y="328" text-anchor="middle" font-size="10" fill="#b45309">secrets</text>
+    <text x="636" y="349" text-anchor="middle" font-size="10" fill="#b45309">&amp; signing</text>
 
-    <!-- bags -> Barry -->
-    <g stroke="currentColor" stroke-width="1.1" opacity=".6" marker-end="url(#arP)">
-      <line x1="778" y1="102" x2="602" y2="102"/>
-      <line x1="778" y1="175" x2="692" y2="175"/>
-      <line x1="778" y1="265" x2="694" y2="265"/>
+    <!-- Agent Gateway <-> Agent Bullpen (Sessions VM) -->
+    <line x1="774" y1="210" x2="774" y2="274" stroke="#5b666b" stroke-width="1.2" marker-end="url(#arP)"/>
+    <line x1="874" y1="276" x2="874" y2="212" stroke="#5b666b" stroke-width="1.2" marker-end="url(#arP)"/>
+    <text x="766" y="247" text-anchor="end" font-size="10" fill="#5b666b">sessions</text>
+    <text x="882" y="241" text-anchor="start" font-size="10" fill="#5b666b">model &amp;</text>
+    <text x="882" y="254" text-anchor="start" font-size="10" fill="#5b666b">tool calls</text>
+
+    <!-- Agent Bullpen (Sessions VM) -->
+    <rect x="702" y="278" width="246" height="110" rx="6" fill="#ffffff" stroke="#0e7c86" stroke-width="1.5"/>
+    <text x="825" y="298" text-anchor="middle" font-weight="600" font-size="12">Agent Bullpen</text>
+    <text x="825" y="313" text-anchor="middle" font-size="10.5" fill="#4a5558">always-on Sessions VM</text>
+
+    <g fill="#e9f3f4" stroke="#0e7c86" stroke-width="1">
+      <rect x="714" y="323" width="68" height="36" rx="4"/>
+      <rect x="791" y="323" width="68" height="36" rx="4"/>
+      <rect x="868" y="323" width="68" height="36" rx="4"/>
     </g>
-    <g text-anchor="middle" font-size="10.5" fill="#7c8689">
-      <text x="740" y="95">pack → a trait</text>
-      <text x="735" y="168">tools</text>
-      <text x="735" y="190">one MCP server</text>
-      <text x="736" y="258">declared</text>
-      <text x="736" y="280">in the bag</text>
+    <g text-anchor="middle" font-size="10.5">
+      <text x="748" y="345">Sandbox 1</text>
+      <text x="825" y="345">Sandbox 2</text>
+      <text x="902" y="345">Sandbox N</text>
     </g>
+    <text x="825" y="376" text-anchor="middle" font-size="9.5" fill="#7c8689">no direct network · mounted workspace grants only</text>
   </g>
 </svg>
